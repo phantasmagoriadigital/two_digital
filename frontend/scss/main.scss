@@ -1,0 +1,278 @@
+@import "../../node_modules/bootstrap/scss/functions";
+//
+// BOOTSTRAP COMPONENTS
+//
+//   Bootstrap variable overwrites
+// Options
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-caret: true;
+$enable-rounded: false;
+$enable-responsive-font-sizes: false;
+$card-bg: transparent !default;
+// Bootstrap 4 grid override
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1470px,
+);
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1440px,
+);
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+$grid-columns: 12;
+$grid-gutter-width: 20px;
+$enable-grid-classes: true;
+// Required
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+// Optional
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+// @import "../../node_modules/bootstrap/scss/code";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../node_modules/bootstrap/scss/mixins/grid-framework";
+@import "../../node_modules/bootstrap/scss/mixins/grid";
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/input-group";
+@import "../../node_modules/bootstrap/scss/custom-forms";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+//  @import "../../node_modules/bootstrap/scss/badge";
+@import "../../node_modules/bootstrap/scss/jumbotron";
+// @import "../../node_modules/bootstrap/scss/alert";
+// @import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/media";
+// @imp ort "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+// @import "../../node_modules/bootstrap/scss/toasts";
+// @import "../../node_modules/bootstrap/scss/modal";
+// @import "../../node_modules/bootstrap/scss/tooltip";
+// @import "../../node_modules/bootstrap/scss/popover";
+@import "../../node_modules/bootstrap/scss/carousel";
+// @import "../../node_modules/bootstrap/scss/spinners";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/print";
+// Design system
+@import "_typography.scss";
+@import "_colors.scss";
+
+/***************************/
+/* SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/***************************/
+/* HERO HEADER */
+.ds-hero-header {
+  h1 {
+    // @include display-1();
+    @include pixelsToFluidText(20px, 110px, 200px);
+    // @include responsive-gutter-2x(bottom);
+    // @include ds-font-primary();
+    color: var(--colors--white);
+    line-height: 160%;
+    //   font-variation-settings: "opsz" 0;
+    --ttVariationSet: "opsz" 0;
+    transition: --ttVariationSet 0.3s ease;
+    //   animation: inktrap 2s infinite linear;
+    &:hover {
+      --ttVariationSet: "opsz" 1;
+    }
+  }
+  //   @keyframes inktrap {
+  //     0% {
+  //       --ttVariationSet: "opsz" 0;
+  //     }
+  //     50% {
+  //       --ttVariationSet: "opsz" 0.9;
+  //     }
+  //   }
+}
+
+/***************************/
+/* ABOUT SECTION */
+
+.ds-about {
+  padding: 12rem 0;
+  .text {
+    @include ds-font-secondary();
+    @include pixelsToFluidText(16px, 24px, 200px);
+    font-weight: 400;
+  }
+}
+
+/***************************/
+/* CLIENT LIST SECTION */
+.ds-client-list {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  &__title {
+    @include heading-1();
+    color: var(--colors--black);
+    text-align: center;
+    margin-bottom: 2.625rem;
+  }
+  &__divider {
+    border-top: solid 0.0625rem var(--colors--grey);
+    width: 83%;
+    margin-bottom: 0.375rem;
+    margin-top: 0rem;
+  }
+  &__client-name {
+    @include heading-4();
+    @include media-breakpoint-down(sm) {
+      font-size: 1.875rem;
+    }
+    //  margin-bottom: 1rem;
+    transition: all 0.3s ease-out;
+  }
+  &__description {
+    @include heading-5();
+    margin-bottom: 0rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  &__client {
+    &:hover {
+      .ds-client-list__description {
+        opacity: 1;
+      }
+      .ds-client-list__client-name {
+        padding-left: 2rem;
+        color: var(--colors--red);
+      }
+      .ds-client-list__divider {
+        border-top: solid 0.0625rem var(--colors--black);
+      }
+    }
+  }
+}
+
+/***************************/
+/* _ds-awards.scss */
+.ds-award {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  &__title {
+    @include heading-1();
+    color: var(--colors--black);
+    margin-bottom: 3.625rem;
+    text-align: center;
+  }
+  &__image {
+    @include media-breakpoint-down(md) {
+      text-align: center;
+    }
+  }
+}
+
+/***************************/
+/* _ds-services.scss */
+.ds-services {
+  padding: 12rem 0;
+  .text {
+    @include ds-font-secondary();
+    @include pixelsToFluidText(16px, 24px, 200px);
+    font-weight: 400;
+    column-count: 2;
+    column-gap: 2rem;
+  }
+}
+
+/***************************/
+/* _ds-navbar.scss */
+
+.ds-navbar {
+  background-color: var(--colors--black);
+  .navbar {
+    // clear default padding
+    padding: 3rem 0;
+    transition: padding 0.3s ease-out;
+    &.slim {
+      padding: 1rem 0 !important;
+    }
+    // height: 8rem;
+    .nav-item {
+      .nav-link {
+        // font styles
+        @include nav-link();
+        color: #686868;
+        // Fluid typography font-size mixin (min, preferred, max)
+        @include pixelsToFluidText(16px, 16px, 24px);
+        // clear default padding
+        padding: 0 1rem;
+        // animate color transition
+        transition: all 0.3s ease-out;
+      }
+      .nav-link {
+        &.active {
+          color: var(--colors--red) !important;
+          padding: 0 1.25rem;
+        }
+      }
+      &:hover {
+        .nav-link {
+          color: var(--colors--white);
+          //   padding: 0 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+.ds-anchor {
+  display: block;
+  visibility: hidden;
+  position: relative;
+  top: -100px;
+}
+
+.ds-work-carousel {
+  .carousel-caption {
+    position: absolute;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+    background: #fff;
+    width: 43%;
+    height: 80%;
+    top: 10%;
+    left: 5%;
+  }
+  &--right {
+    .carousel-caption {
+      left: unset;
+      right: 5%;
+    }
+  }
+}

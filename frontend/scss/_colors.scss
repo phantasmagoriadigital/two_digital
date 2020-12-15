@@ -1,0 +1,62 @@
+:root {
+    /* Colors / Two */
+    --colors--red: #E4301A;
+    /* Colours/red */
+    --colors--black: #000000;
+    /* Colours/black */
+    --colors--white: #FFFFFF;
+    /* Colours/white */
+    --colors--grey: #727272;
+    /* Colours/grey */
+    --colors--grey_1: #EBEBEB;
+    /* Colours/grey_1 */
+    --colors--grey_2: #C4C4C4;
+    /* Colours/grey_2 */
+    --colors--grey_3: #5F5F5F;
+    /* Colours/grey_3 */
+    --colors--grey_4: #939393;
+    /* Colours/grey_4 */
+}
+
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+BACKGROUND COLOR STYLE SWATCHES 
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+
+.bg-color-red {
+    background-color: var(--colors--red);
+}
+
+.bg-color-black {
+    background-color: var(--colors--black);
+}
+
+.bg-color-white {
+    background-color: var(--colors--white);
+}
+
+.bg-color-grey {
+    background-color: var(--colors--grey);
+}
+
+.bg-color-grey_1 {
+    background-color: var(--colors--grey_1);
+}
+
+.color-red {
+    color: var(--colors--red);
+}
+
+.color-black {
+    color: var(--colors--black);
+}
+
+.colors-white {
+    color: var(--colors--white);
+}
+
+.colors-grey_1 {
+    color: var(--colors--grey_1);
+}

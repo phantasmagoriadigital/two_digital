@@ -1,0 +1,245 @@
+/***************************/
+/* Fluid Typography Helper functions */
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@function calculateClamp(
+  $minimum,
+  $preferred,
+  $maximum,
+  $preferred_viewport_width: 1000px
+) {
+  @return clamp(
+    calculateRem($minimum),
+    strip-units((($preferred + 0) / $preferred_viewport_width) * 100) * 1vw,
+    calculateRem($maximum)
+  );
+}
+
+/***************************/
+/* Fluid text function */
+
+/* The font will be at the preferrred size on 1440 pixel wide viewports by default. */
+@mixin pixelsToFluidText(
+  $minimum,
+  $preferred,
+  $maximum,
+  $preferred_viewport_width: 1440px
+) {
+  /* Fallback for IE11 */
+  font-size: calculateRem($preferred);
+  font-size: calculateClamp(
+    $minimum,
+    $preferred,
+    $maximum,
+    $preferred_viewport_width
+  );
+}
+
+/***************************/
+/* Fluid gutters */
+
+@mixin responsive-gutter-1x($direction: bottom, $gutter: 36px) {
+  @if $direction == top {
+    margin-top: $gutter;
+    margin-top: calculateClamp(($gutter/2), ($gutter * 0.75), $gutter);
+  } @else if $direction == bottom {
+    margin-bottom: $gutter;
+    margin-bottom: calculateClamp(($gutter/2), ($gutter * 0.75), $gutter);
+  } @else {
+    @error "Unknown direction #{$direction}.";
+  }
+}
+
+@mixin responsive-gutter-2x($direction: bottom, $gutter: 36px) {
+  @if $direction == top {
+    margin-top: ($gutter * 2);
+    margin-top: calculateClamp($gutter, ($gutter * 1.5), ($gutter * 2));
+  } @else if $direction == bottom {
+    margin-bottom: ($gutter * 2);
+    margin-bottom: calculateClamp($gutter, ($gutter * 1.5), ($gutter * 2));
+  } @else {
+    @error "Unknown direction #{$direction}.";
+  }
+}
+
+/***************************/
+/* START OF FONTS */
+
+@font-face {
+  font-family: "WhyteInktrap";
+  src: 
+    // url('/assets/fonts/WhyteInktrap-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+    // url('/assets/fonts/WhyteInktrap-Medium.woff') format('woff'), /* Pretty Modern Browsers */
+    // url('/assets/fonts/WhyteInktrap-Medium.otf') format('truetype'), /* Safari, Android, iOS */
+    url("/assets/fonts/WhyteVariable.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Greycliff";
+  src: url("/assets/fonts/Greycliff-CF-Regular.otf") format("truetype"); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Greycliff";
+  src: url("/assets/fonts/Greycliff-CF-Bold.otf") format("truetype");
+  /* Safari, Android, iOS */
+  font-weight: bold;
+}
+
+@mixin ds-font-primary {
+  font-family: WhyteInktrap;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@mixin ds-font-secondary {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@mixin ds-font-tertiary {
+  font-family: Greycliff;
+  font-style: normal;
+}
+
+@mixin display-1 {
+  //   font-size: 6.75rem;
+  @include pixelsToFluidText(20px, 110px, 200px);
+  //   line-height: 119.72%;
+  line-height: 160%;
+  //   text-transform: uppercase;
+  @include ds-font-primary();
+  //   @include media-breakpoint-down(sm) {
+  //     font-size: 3.4375rem;
+  //   }
+}
+
+@mixin display-2 {
+  font-weight: 500;
+  font-size: 5rem;
+  line-height: 160.72%;
+  @include ds-font-primary();
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@mixin heading-1 {
+  // font-size: 2.75rem;
+  @include pixelsToFluidText(22px, 44px, 200px);
+  line-height: 122%;
+  @include ds-font-primary();
+}
+
+@mixin heading-2 {
+  font-size: 1.875rem;
+  line-height: 126.22%;
+  // text-align: center;
+  @include ds-font-primary();
+}
+
+@mixin text-normal {
+  font-size: 1.25rem;
+  line-height: 143%;
+  letter-spacing: 0.06em;
+  @include ds-font-secondary();
+  @include media-breakpoint-between(md, lg) {
+    font-size: 0.875rem;
+  }
+  @include media-breakpoint-down(xs) {
+    font-size: 1rem;
+  }
+}
+
+@mixin heading-3 {
+  font-size: 0.875rem;
+  line-height: 160.72%;
+  letter-spacing: 0.15em;
+  @include ds-font-secondary();
+}
+@mixin nav-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  //   line-height: 101.7%;
+  @include ds-font-secondary();
+}
+
+@mixin button-text {
+  font-size: 0.75rem;
+  line-height: 160.72%;
+  letter-spacing: 0.15em;
+  @include ds-font-tertiary();
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@mixin overtitle {
+  font-weight: 500;
+  font-size: 0.625rem;
+  line-height: 122%;
+  letter-spacing: 0.225em;
+  text-transform: uppercase;
+  @include ds-font-secondary();
+}
+
+@mixin card-text {
+  font-weight: regular;
+  font-size: 0.875rem;
+  line-height: 122%;
+  letter-spacing: 0.325em;
+  @include ds-font-tertiary();
+  text-transform: uppercase;
+}
+
+@mixin heading-4 {
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 126.22%;
+  @include ds-font-tertiary();
+}
+
+@mixin heading-5 {
+  font-size: 16px;
+  line-height: 144.22%;
+  align-items: center;
+  text-align: center;
+  @include ds-font-secondary();
+}
+
+@mixin form-text {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 160.72%;
+  letter-spacing: 0.23em;
+  @include ds-font-tertiary();
+  text-transform: uppercase;
+}
+
+.display-1 {
+  @include display-1();
+}
+
+.heading-1 {
+  @include heading-1();
+}
+
+.heading-2 {
+  @include heading-2();
+}
+
+.text-normal {
+  @include text-normal();
+}
+
+.heading-3 {
+  @include heading-3();
+}
