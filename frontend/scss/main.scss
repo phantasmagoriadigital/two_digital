@@ -90,23 +90,81 @@ $enable-grid-classes: true;
 html {
   scroll-behavior: smooth;
 }
+/***************************/
+/* _ds-navbar.scss */
 
+.ds-navbar {
+  background-color: var(--colors--black);
+  .navbar {
+    .navbar-brand {
+      width: 6rem;
+      height: 6rem;
+      transition: all 0.4s ease-out;
+    }
+    // clear default padding
+    padding: 3rem 0;
+    transition: all 0.4s ease-out;
+    &.slim {
+      padding: 1rem 0 !important;
+      .navbar-brand {
+        width: 4rem !important;
+        height: 4rem !important;
+      }
+    }
+    // height: 8rem;
+    .nav-item {
+      .nav-link {
+        // font styles
+        @include nav-link();
+        color: #686868;
+        // Fluid typography font-size mixin (min, preferred, max)
+        @include pixelsToFluidText(16px, 16px, 24px);
+        // clear default padding
+        padding: 0 1rem;
+        // animate color transition
+        transition: all 0.3s ease-out;
+      }
+      .nav-link {
+        &.active {
+          color: var(--colors--red) !important;
+          padding: 0 1.25rem;
+        }
+      }
+      &:hover {
+        .nav-link {
+          color: var(--colors--white);
+          //   padding: 0 1.25rem;
+        }
+      }
+    }
+  }
+}
 /***************************/
 /* HERO HEADER */
 .ds-hero-header {
+  padding-bottom: 8.5rem;
   h1 {
     // @include display-1();
     @include pixelsToFluidText(20px, 110px, 200px);
     // @include responsive-gutter-2x(bottom);
     // @include ds-font-primary();
     color: var(--colors--white);
-    line-height: 160%;
+    line-height: 140%;
     font-variation-settings: "opsz" 1;
     --ttVariationSet: "opsz" 1;
     // transition: --ttVariationSet 0.3s ease;
     //   animation: inktrap 2s infinite linear;
+    .pill {
+      background-color: var(--colors--red);
+      border-radius: 100rem;
+      padding: 0 2rem 1rem 2rem;
+      transition: all 0.3s ease;
+    }
     &:hover {
       //   --ttVariationSet: "opsz" 1;
+      .pill {
+        padding: 0 4rem 1rem 4rem;
+      }
     }
   }
   //   @keyframes inktrap {
@@ -227,50 +285,6 @@ html {
 .mt7 {
   margin-top: 7rem;
 }
-/***************************/
-/* _ds-navbar.scss */
-
-.ds-navbar {
-  background-color: var(--colors--black);
-  .navbar {
-    .navbar-brand {
-      width: 4rem;
-      height: 4rem;
-    }
-    // clear default padding
-    padding: 3rem 0;
-    transition: padding 0.3s ease-out;
-    &.slim {
-      padding: 1rem 0 !important;
-    }
-    // height: 8rem;
-    .nav-item {
-      .nav-link {
-        // font styles
-        @include nav-link();
-        color: #686868;
-        // Fluid typography font-size mixin (min, preferred, max)
-        @include pixelsToFluidText(16px, 16px, 24px);
-        // clear default padding
-        padding: 0 1rem;
-        // animate color transition
-        transition: all 0.3s ease-out;
-      }
-      .nav-link {
-        &.active {
-          color: var(--colors--red) !important;
-          padding: 0 1.25rem;
-        }
-      }
-      &:hover {
-        .nav-link {
-          color: var(--colors--white);
-          //   padding: 0 1.25rem;
-        }
-      }
-    }
-  }
-}
 
 .ds-anchor {
   display: block;
@@ -286,15 +300,15 @@ html {
     color: #fff;
     text-align: center;
     background: #fff;
-    width: 43%;
-    height: 80%;
-    top: 10%;
-    left: 5%;
+    width: 35%;
+    height: 65%;
+    top: 18%;
+    left: 9%;
   }
   &--right {
     .carousel-caption {
       left: unset;
-      right: 5%;
+      right: 9%;
     }
   }
 }
