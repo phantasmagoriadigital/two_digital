@@ -95,6 +95,7 @@ html {
 
 .ds-navbar {
   background-color: var(--colors--black);
+  top: -1px !important;
   .navbar {
     .navbar-brand {
       width: 6rem;
@@ -149,7 +150,7 @@ html {
     // @include responsive-gutter-2x(bottom);
     // @include ds-font-primary();
     color: var(--colors--white);
-    line-height: 140%;
+    line-height: 130%;
     font-variation-settings: "opsz" 1;
     --ttVariationSet: "opsz" 1;
     // transition: --ttVariationSet 0.3s ease;
@@ -182,6 +183,18 @@ html {
 
 .ds-about {
   padding: 12rem 0;
+  .text {
+    @include ds-font-secondary();
+    @include pixelsToFluidText(16px, 24px, 200px);
+    font-weight: 400;
+  }
+}
+
+/***************************/
+/* ACCELERATE SECTION */
+
+.ds-accelerate {
+  padding: 15rem 0;
   .text {
     @include ds-font-secondary();
     @include pixelsToFluidText(16px, 24px, 200px);
@@ -267,6 +280,7 @@ html {
   }
 }
 .ds-card--service {
+  height: 100%;
   .card-body {
     padding: 2.5rem;
   }
@@ -309,6 +323,69 @@ html {
     .carousel-caption {
       left: unset;
       right: 9%;
+    }
+  }
+}
+
+.ds-footer {
+  padding-top: 8rem;
+  padding-bottom: 1.5625rem;
+  &__title {
+    @include display-2();
+    margin-bottom: 2.75rem;
+  }
+  &__links {
+    a {
+      @include form-text();
+      color: var(--colors--black);
+      margin-right: 1.25rem;
+      margin-left: 1.25rem;
+      @include media-breakpoint-down(sm) {
+        margin-left: 0rem;
+        margin-right: 0rem;
+      }
+    }
+    &:first-child {
+      margin-left: 0rem;
+    }
+  }
+  &__links-col {
+    @include media-breakpoint-down(sm) {
+      text-align-last: justify;
+    }
+  }
+}
+
+.ds-form {
+  margin-bottom: 11.25rem;
+  &__group {
+    margin-bottom: 2.75rem;
+    label {
+      @include form-text();
+      position: absolute;
+      pointer-events: none;
+      padding-top: 0.187rem;
+      -webkit-transition: all 0.28s ease;
+      transition: all 0.28s ease;
+      top: 0rem;
+      &.focus {
+        top: -1rem;
+        font-size: 0.5rem;
+        color: var(--colors--white);
+      }
+      select {
+        color: var(--colors--white);
+      }
+    }
+  }
+  &__control {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid var(--colors--black);
+    &:focus {
+      background-color: transparent;
+      box-shadow: none;
+      border-color: var(--colors--black);
     }
   }
 }
