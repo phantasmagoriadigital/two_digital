@@ -1,11 +1,11 @@
-name: aevitas-web
+name: two-digital-web
 
 static_sites:
   - name: frontend
     environment_slug: html
     github:
       repo: phantasmagoriadigital/two_digital
-      branch: main
+      branch: master
       deploy_on_push: true
     source_dir: build
     index_document: index.html
