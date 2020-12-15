@@ -101,12 +101,12 @@ html {
     // @include ds-font-primary();
     color: var(--colors--white);
     line-height: 160%;
-    //   font-variation-settings: "opsz" 0;
-    --ttVariationSet: "opsz" 0;
-    transition: --ttVariationSet 0.3s ease;
+    font-variation-settings: "opsz" 1;
+    --ttVariationSet: "opsz" 1;
+    // transition: --ttVariationSet 0.3s ease;
     //   animation: inktrap 2s infinite linear;
     &:hover {
-      --ttVariationSet: "opsz" 1;
+      //   --ttVariationSet: "opsz" 1;
     }
   }
   //   @keyframes inktrap {
@@ -208,13 +208,35 @@ html {
     column-gap: 2rem;
   }
 }
-
+.ds-card--service {
+  .card-body {
+    padding: 2.5rem;
+  }
+  .card-title {
+    @include ds-font-primary();
+    @include pixelsToFluidText(16px, 36px, 200px);
+    color: var(--colors--red);
+    margin-bottom: 2.5rem;
+  }
+  p {
+    @include ds-font-secondary();
+    @include pixelsToFluidText(16px, 24px, 200px);
+    color: var(--colors--white);
+  }
+}
+.mt7 {
+  margin-top: 7rem;
+}
 /***************************/
 /* _ds-navbar.scss */
 
 .ds-navbar {
   background-color: var(--colors--black);
   .navbar {
+    .navbar-brand {
+      width: 4rem;
+      height: 4rem;
+    }
     // clear default padding
     padding: 3rem 0;
     transition: padding 0.3s ease-out;
