@@ -156,7 +156,7 @@ html {
     // transition: --ttVariationSet 0.3s ease;
     //   animation: inktrap 2s infinite linear;
     .pill {
-      background-color: var(--colors--red);
+      border: solid 0.125rem var(--colors--white);
       border-radius: 100rem;
       padding: 0 2rem 1rem 2rem;
       transition: all 0.3s ease;
@@ -164,7 +164,8 @@ html {
     &:hover {
       //   --ttVariationSet: "opsz" 1;
       .pill {
-        padding: 0 4rem 1rem 4rem;
+        padding: 0 2.5rem 1rem 2.5rem;
+        border: solid 0.125rem var(--colors--white);
       }
     }
   }
@@ -388,4 +389,15 @@ html {
       border-color: var(--colors--black);
     }
   }
+}
+
+.carousel-item-next:not(.carousel-item-left),
+.active.carousel-item-right {
+  transform: unset;
+  transform: scaleX(0%);
+}
+
+.carousel-item-prev:not(.carousel-item-right),
+.active.carousel-item-left {
+  transform: scaleX(0%);
 }
