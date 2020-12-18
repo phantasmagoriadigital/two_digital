@@ -186,7 +186,7 @@ html {
   padding: 12rem 0;
   .text {
     @include ds-font-secondary();
-    @include pixelsToFluidText(16px, 24px, 200px);
+    @include pixelsToFluidText(16px, 20px, 200px);
     font-weight: 400;
   }
 }
@@ -198,7 +198,7 @@ html {
   padding: 15rem 0;
   .text {
     @include ds-font-secondary();
-    @include pixelsToFluidText(16px, 24px, 200px);
+    @include pixelsToFluidText(16px, 20px, 200px);
     font-weight: 400;
   }
 }
@@ -274,7 +274,7 @@ html {
   padding: 12rem 0;
   .text {
     @include ds-font-secondary();
-    @include pixelsToFluidText(16px, 24px, 200px);
+    @include pixelsToFluidText(16px, 20px, 200px);
     font-weight: 400;
     column-count: 2;
     column-gap: 2rem;
@@ -293,7 +293,7 @@ html {
   }
   p {
     @include ds-font-secondary();
-    @include pixelsToFluidText(16px, 24px, 200px);
+    @include pixelsToFluidText(16px, 20px, 200px);
     color: var(--colors--white);
   }
 }
@@ -391,13 +391,13 @@ html {
   }
 }
 
-.carousel-item-next:not(.carousel-item-left),
-.active.carousel-item-right {
-  transform: unset;
-  transform: scaleX(0%);
-}
+// .carousel-item-next:not(.carousel-item-left),
+// .active.carousel-item-right {
+//   transform: unset;
+//   transform: scaleX(0%);
+// }
 
-.carousel-item-prev:not(.carousel-item-right),
-.active.carousel-item-left {
-  transform: scaleX(0%);
-}
+// .carousel-item-prev:not(.carousel-item-right),
+// .active.carousel-item-left {
+//   transform: scaleX(0%);
+// }

@@ -365,7 +365,7 @@
       <div class="row d-flex justify-content-center">
         <!-- <img src="img/accelerate.png" alt=""> -->
         <div class="col-12 col-md-3">
-          <h1 class="heading-1" data-aos="fade-up">Accelerate</h1>
+          <h1 class="heading-1 colors-white" data-aos="fade-up">Accelerate</h1>
         </div>
         <div class="col-12 col-md-7">
           <p class="text">
@@ -388,13 +388,13 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 col-lg-2 offset-lg-3 ds-award__image">
+          <div class="col-12 col-lg-2 offset-lg-3 ds-award__image ds-tilt">
             <img src="/img/graphis.jpg" alt="" />
           </div>
-          <div class="col-12 col-lg-2 ds-award__image">
+          <div class="col-12 col-lg-2 ds-award__image ds-tilt">
             <img src="/img/CA.jpg" alt="" />
           </div>
-          <div class="col-12 col-lg-2 ds-award__image">
+          <div class="col-12 col-lg-2 ds-award__image ds-tilt">
             <img src="/img/Kyoorius.jpg" alt="" />
           </div>
         </div>
@@ -700,8 +700,8 @@
       });
 
       /*
-      // REDUCE NAVBAR HEIGHT ON SCROLL
-      */
+          // REDUCE NAVBAR HEIGHT ON SCROLL
+          */
       $(window).scroll(function (event) {
         var y = $(this).scrollTop(); //set position from top when to change style in pixels
         if (y >= window.innerHeight + 150) {
@@ -711,8 +711,8 @@
         }
       });
       /*
-      // SWIPER CAROSUEL SETTINGS
-      */
+          // SWIPER CAROSUEL SETTINGS
+          */
       var swiper = new Swiper(".swiper-container", {
         slidesPerView: 1,
         spaceBetween: 30,
@@ -753,8 +753,8 @@
       });
 
       /*
-      // ON SCROLL ANIMATION SETTINGS
-      */
+          // ON SCROLL ANIMATION SETTINGS
+          */
       var s;
       AOS.init({
         // Global settings:
@@ -781,8 +781,8 @@
       });
 
       /*
-      // CARD TILT ANIMATION EFFECT - TILT JS
-      */
+          // CARD TILT ANIMATION EFFECT - TILT JS
+          */
       const tilt = $(".ds-tilt").tilt({
         maxTilt: 10,
         perspective: 1000, // Transform perspective, the lower the more extreme the tilt gets.
@@ -792,16 +792,16 @@
         transition: true, // Set a transition on enter/exit.
         disableAxis: null, // What axis should be disabled. Can be X or Y.
         reset: true, // If the tilt effect has to be reset on exit.
-        glare: true, // Enables glare effect
-        maxGlare: 0.2, // From 0 - 1.
+        glare: false, // Enables glare effect
+        maxGlare: 0, // From 0 - 1.
       });
 
       /*
-      ::::::::::::::::::::::::::::::::::::::::::::::::::::
-      FORM FOCUS HANDLING
-      — To enable material design like labels
-      ::::::::::::::::::::::::::::::::::::::::::::::::::::
-      */
+          ::::::::::::::::::::::::::::::::::::::::::::::::::::
+          FORM FOCUS HANDLING
+          — To enable material design like labels
+          ::::::::::::::::::::::::::::::::::::::::::::::::::::
+          */
       // on input focus label add class
       $(".form-group input, .form-group select").on("focus", function () {
         $(this).siblings("label").addClass("focus");
@@ -816,8 +816,8 @@
       });
 
       /*
-      // LOGO ANIMATION
-      */
+          // LOGO ANIMATION
+          */
       var animation = bodymovin.loadAnimation({
         container: document.getElementById("logo"), // Required
         path: "logo.json", // Required
@@ -860,7 +860,19 @@
         path: "two_intro.json",
         // audioFactory: createAudio,
       });
-      lottie.pause();
+      //   lottie.pause();
+
+      //   function touchStarted() {
+      //     if (getAudioContext().state !== "running") {
+      //       getAudioContext().resume();
+      //     }
+      //   }
+      $(document).ready(function () {
+        // var autostart = touchStarted();
+        console.log("ready");
+        // $("body").scrollTo(50);
+      });
+
       //   var wakency = lottie.loadAnimation({
       //     container: document.getElementById("wakency"), // Required
       //     renderer: "svg",
@@ -870,10 +882,10 @@
       //   });
 
       /*
-    ::::::::::::::::::::::::::::::::::::::::::::::::::::
-    CAROUSEL
-    ::::::::::::::::::::::::::::::::::::::::::::::::::::
-    */
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::
+        CAROUSEL
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::
+        */
       $("#work-carousel-left").bind("slide.bs.carousel", function (e) {
         console.log("slide event!");
       });
