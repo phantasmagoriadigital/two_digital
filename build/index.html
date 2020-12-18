@@ -18,7 +18,7 @@
     <div class="container-fluid px-0 position-relative">
       <div class="row">
         <div class="col-12">
-          <lottie-player
+          <!-- <lottie-player
             src="pitch.json"
             background="transparent"
             speed="1"
@@ -26,7 +26,8 @@
             loop
             autoplay
             resizeMode="cover"
-          ></lottie-player>
+          ></lottie-player> -->
+          <div id="hero-video" style="width: 100vw; height: 42.2vw"></div>
         </div>
       </div>
     </div>
@@ -543,7 +544,7 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
       <div class="row col-12">
         <h1>version 3: audio but not in sync / colors aren't matching</h1>
       </div>
@@ -552,9 +553,9 @@
           <div id="wakency" style="width: 100vw; height: 42.2vw"></div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <footer>
+    <footer id="talk">
       <div class="container-fluid bg-color-red ds-footer">
         <div class="container">
           <div class="row">
@@ -851,14 +852,15 @@
           preload: true,
         });
       }
-      lottie.loadAnimation({
-        container: document.getElementById("wakency"),
+      var heroVideo = lottie.loadAnimation({
+        container: document.getElementById("hero-video"),
         renderer: "svg",
-        loop: true,
+        loop: false,
         autoplay: true,
         path: "two_intro.json",
         // audioFactory: createAudio,
       });
+      lottie.pause();
       //   var wakency = lottie.loadAnimation({
       //     container: document.getElementById("wakency"), // Required
       //     renderer: "svg",
