@@ -12,7 +12,7 @@
     />
   </head>
 
-  <body data-spy="scroll" data-target="#ds-navbar" data-offset="200">
+  <body data-spy="scroll" data-target="#ds-navbar" data-aos-offset="200">
     <!-- *************************** /
     /* INTRO VIDEO */-->
     <div class="container-fluid px-0 position-relative">
@@ -38,7 +38,13 @@
         class="navbar navbar-expand-md col-12 col-md-10 mx-auto"
         id="ds-navbar"
       >
-        <a class="navbar-brand" href="#" id="logo">
+        <a
+          class="navbar-brand"
+          href="#"
+          id="logo"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-top"
+        >
           <!-- <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> -->
         </a>
         <button
@@ -537,21 +543,16 @@
       </div>
     </div>
 
-    <!-- <div class="container-fluid">
+    <div class="container-fluid">
+      <div class="row col-12">
+        <h1>version 3: audio but not in sync / colors aren't matching</h1>
+      </div>
       <div class="row">
-        <div class="col-12">
-
-          <lottie-player
-            src="wakency.json"
-            background="transparent"
-            speed="1"
-            style="width: 600px; height: 360px"
-            loop
-            autoplay
-          ></lottie-player>
+        <div class="col-12 px-0">
+          <div id="wakency" style="width: 100vw; height: 42.2vw"></div>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <footer>
       <div class="container-fluid bg-color-red ds-footer">
@@ -662,27 +663,55 @@
       crossorigin="anonymous"
     ></script>
     <!-- <script src="https://cdnjs.com/libraries/bodymovin" type="text/javascript"></script> -->
+
+    <!--  SVG ANIMATIONS & AUDIO -->
+    <!-- Audio support using Howler -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"
+      integrity="sha512-L6Z/YtIPQ7eU3BProP34WGU5yIRk7tNHk7vaC2dB1Vy1atz6wl9mCkTPPZ2Rn1qPr+vY2mZ9odZLdGYuaBk7dQ=="
+      crossorigin="anonymous"
+    ></script>
     <script src="js/bodymovin.js" type="text/javascript"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.5/lottie_light.min.js"
+      integrity="sha512-1l62j2CRPEPWuhItXcsYJw52xGFtiBTkv0/TAEuuDCbakC3KMW/B3m7fu4iSMY54bP1nTrRC2DiHAuMt7eF0Vw=="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- <script
       src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.5/lottie.min.js"
       integrity="sha512-0bCDSnaX8FOD9Mq8WbHcDwshXwCB5V4EP+UBu87WQgga2b7lAsuEbaSmIZjH/XEmNhJuhrPbFHemre5HZwrk9w=="
       crossorigin="anonymous"
     ></script> -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.5/lottie_light.min.js"
-      integrity="sha512-1l62j2CRPEPWuhItXcsYJw52xGFtiBTkv0/TAEuuDCbakC3KMW/B3m7fu4iSMY54bP1nTrRC2DiHAuMt7eF0Vw=="
-      crossorigin="anonymous"
-    ></script>
+
+    <!-- TILT EFFECT librry -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
 
+    <!-- ANIMATE ON SCROLL JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- swiper js CDN -->
+    <!-- swiper js for swipe carousels CDN -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- Swiper js Settings -->
     <script>
+      var sound = new Howl({
+        // src: ["images/aud_0.mp3"],
+      });
+
+      /*
+      // REDUCE NAVBAR HEIGHT ON SCROLL
+      */
+      $(window).scroll(function (event) {
+        var y = $(this).scrollTop(); //set position from top when to change style in pixels
+        if (y >= window.innerHeight + 150) {
+          $(".ds-navbar .navbar").addClass("slim");
+        } else {
+          $(".ds-navbar .navbar").removeClass("slim");
+        }
+      });
+      /*
+      // SWIPER CAROSUEL SETTINGS
+      */
       var swiper = new Swiper(".swiper-container", {
         slidesPerView: 1,
         spaceBetween: 30,
@@ -722,6 +751,10 @@
         },
       });
 
+      /*
+      // ON SCROLL ANIMATION SETTINGS
+      */
+      var s;
       AOS.init({
         // Global settings:
         disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -746,7 +779,9 @@
         $(".navbar-collapse").collapse("hide");
       });
 
-      // card tilt
+      /*
+      // CARD TILT ANIMATION EFFECT - TILT JS
+      */
       const tilt = $(".ds-tilt").tilt({
         maxTilt: 10,
         perspective: 1000, // Transform perspective, the lower the more extreme the tilt gets.
@@ -760,15 +795,6 @@
         maxGlare: 0.2, // From 0 - 1.
       });
 
-      // Reduce navbar height on scroll
-      $(window).scroll(function (event) {
-        var y = $(this).scrollTop(); //set position from top when to change style in pixels
-        if (y >= window.innerHeight + 150) {
-          $(".ds-navbar .navbar").addClass("slim");
-        } else {
-          $(".ds-navbar .navbar").removeClass("slim");
-        }
-      });
       /*
       ::::::::::::::::::::::::::::::::::::::::::::::::::::
       FORM FOCUS HANDLING
@@ -788,7 +814,9 @@
         // $(this).siblings("label").hide();
       });
 
-      // Logo Animation
+      /*
+      // LOGO ANIMATION
+      */
       var animation = bodymovin.loadAnimation({
         container: document.getElementById("logo"), // Required
         path: "logo.json", // Required
@@ -797,28 +825,53 @@
         autoplay: true, // Optional
         name: "Hello World", // Name for future reference. Optional.
       });
-      // Logo Animation
-      //   var animation2 = lottie.loadAnimation({
-      //     container: document.getElementById("wakency"), // Required
-      //     path: "wakency.json", // Required
-      //     renderer: "svg", // Requireds vg/canvas/html
-      //     loop: true, // Optional
-      //     autoplay: true, // Optional
-      //     name: "Hello World1", // Name for future reference. Optional.
-      //   });
-      var wakency = lottie.loadAnimation({
-        container: document.getElementById("wakency"), // Required
+
+      function loadSound(src) {
+        var sound = document.createElement("audio");
+        if ("src" in sound) {
+          sound.autoPlay = false;
+        } else {
+          sound = document.createElement("bgsound");
+          sound.volume = -10000;
+          sound.play = function () {
+            this.src = src;
+            this.volume = 0;
+          };
+        }
+        sound.src = src;
+        document.body.appendChild(sound);
+        return sound;
+      }
+      //   var sound = loadSound("images/aud_0.mp3"); //  preload
+      //   sound.play();
+
+      function createAudio(assetPath) {
+        return new Howl({
+          src: [assetPath],
+          preload: true,
+        });
+      }
+      lottie.loadAnimation({
+        container: document.getElementById("wakency"),
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "wakency.json", // the path to the animation json
+        path: "two_intro.json",
+        // audioFactory: createAudio,
       });
+      //   var wakency = lottie.loadAnimation({
+      //     container: document.getElementById("wakency"), // Required
+      //     renderer: "svg",
+      //     loop: true,
+      //     autoplay: true,
+      //     path: "wakency.json", // the path to the animation json
+      //   });
 
       /*
-          ::::::::::::::::::::::::::::::::::::::::::::::::::::
-          CAROUSEL
-          ::::::::::::::::::::::::::::::::::::::::::::::::::::
-          */
+    ::::::::::::::::::::::::::::::::::::::::::::::::::::
+    CAROUSEL
+    ::::::::::::::::::::::::::::::::::::::::::::::::::::
+    */
       $("#work-carousel-left").bind("slide.bs.carousel", function (e) {
         console.log("slide event!");
       });
