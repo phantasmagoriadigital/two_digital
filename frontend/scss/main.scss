@@ -310,10 +310,11 @@ html {
 
 .ds-work-carousel {
   .carousel-caption {
+    padding: 2rem;
     position: absolute;
     z-index: 10;
     color: #fff;
-    text-align: center;
+    text-align: left;
     background: #fff;
     width: 35%;
     height: 65%;
@@ -326,6 +327,10 @@ html {
       right: 9%;
     }
   }
+}
+// carousel custom animation speeed anime.css
+.animate__animated.animate__delay-1s {
+  animation-delay: 0.5s !important;
 }
 
 .ds-footer {
@@ -394,10 +399,26 @@ html {
 // .carousel-item-next:not(.carousel-item-left),
 // .active.carousel-item-right {
 //   transform: unset;
-//   transform: scaleX(0%);
+//   transform: translateX(100%);
+//   z-index: 0 !important;
 // }
 
 // .carousel-item-prev:not(.carousel-item-right),
 // .active.carousel-item-left {
-//   transform: scaleX(0%);
+//   // transform: translateX(-25%);
+//   z-index: 10000 !important;
 // }
+
+#contact-video {
+  display: none;
+  width: 0%;
+  height: 0%;
+  &.play {
+    width: 100vw;
+    position: fixed;
+    bottom: 0px;
+    z-index: 10000;
+    height: 100vh;
+    display: block;
+  }
+}

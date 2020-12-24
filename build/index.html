@@ -10,6 +10,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
 
   <body data-spy="scroll" data-target="#ds-navbar" data-aos-offset="200">
@@ -146,12 +150,13 @@
                   alt="First slide"
                 />
                 <div
-                  class="carousel-caption d-none d-md-block bg-color-black"
-                  data-aos="fade-left"
-                  data-aos-delay="500"
+                  class="carousel-caption d-none d-md-block bg-color-black animate__animated animate__delay-1s"
                 >
-                  <h5>...</h5>
-                  <p>...</p>
+                  <h6>BRANDING/ DIGITAL/ COMMUNICATION</h6>
+                  <h1>
+                    Designing India’s first on-the-go entertainment platform
+                  </h1>
+                  <h6>AMNEX TECHNOLOGIES</h6>
                 </div>
               </div>
               <div class="carousel-item">
@@ -234,8 +239,11 @@
                   data-aos="fade-right"
                   data-aos-delay="500"
                 >
-                  <h5>...</h5>
-                  <p>...</p>
+                  <h6>BRANDING/ DIGITAL/ COMMUNICATION</h6>
+                  <h1>
+                    Designing India’s first on-the-go entertainment platform
+                  </h1>
+                  <h6>AMNEX TECHNOLOGIES</h6>
                 </div>
               </div>
               <div class="carousel-item">
@@ -554,7 +562,7 @@
         </div>
       </div>
     </div> -->
-
+    <div class="contact-animation" id="contact-video"></div>
     <footer id="talk">
       <div class="container-fluid bg-color-red ds-footer">
         <div class="container">
@@ -628,6 +636,7 @@
                     type="submit"
                     value="Submit"
                     class="btn ds-btn ds-btn--mixed ds-btn__text"
+                    id="contact-button"
                   >
                     get in touch
                   </button>
@@ -768,7 +777,7 @@
         throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
 
         // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-        offset: 100, // offset (in px) from the original trigger point
+        offset: 150, // offset (in px) from the original trigger point
         delay: 50, // values from 0 to 3000, with step 50ms
         duration: 500, // values from 0 to 3000, with step 50ms
         easing: "ease", // default easing for AOS animations
@@ -816,9 +825,9 @@
       });
 
       /*
-          // LOGO ANIMATION
-          */
-      var animation = bodymovin.loadAnimation({
+      // LOGO ANIMATION
+      */
+      var animation = lottie.loadAnimation({
         container: document.getElementById("logo"), // Required
         path: "logo.json", // Required
         renderer: "svg", // Requireds vg/canvas/html
@@ -827,22 +836,22 @@
         name: "Hello World", // Name for future reference. Optional.
       });
 
-      function loadSound(src) {
-        var sound = document.createElement("audio");
-        if ("src" in sound) {
-          sound.autoPlay = false;
-        } else {
-          sound = document.createElement("bgsound");
-          sound.volume = -10000;
-          sound.play = function () {
-            this.src = src;
-            this.volume = 0;
-          };
-        }
-        sound.src = src;
-        document.body.appendChild(sound);
-        return sound;
-      }
+      // function loadSound(src) {
+      //   var sound = document.createElement("audio");
+      //   if ("src" in sound) {
+      //     sound.autoPlay = false;
+      //   } else {
+      //     sound = document.createElement("bgsound");
+      //     sound.volume = -10000;
+      //     sound.play = function () {
+      //       this.src = src;
+      //       this.volume = 0;
+      //     };
+      //   }
+      //   sound.src = src;
+      //   document.body.appendChild(sound);
+      //   return sound;
+      // }
       //   var sound = loadSound("images/aud_0.mp3"); //  preload
       //   sound.play();
 
@@ -860,26 +869,37 @@
         path: "two_intro.json",
         // audioFactory: createAudio,
       });
-      //   lottie.pause();
+      var contactVideo = lottie.loadAnimation({
+        container: document.getElementById("contact-video"),
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        path: "https://assets10.lottiefiles.com/packages/lf20_REOnx3.json",
+        // audioFactory: createAudio,
+      });
 
-      //   function touchStarted() {
-      //     if (getAudioContext().state !== "running") {
-      //       getAudioContext().resume();
-      //     }
-      //   }
+      // on complete, hide it
+      contactVideo.addEventListener("complete", hideContactAnimation);
+      // add click event listener for contact form
+      document
+        .getElementById("contact-button")
+        .addEventListener("click", function () {
+          console.log("submit");
+          // play contact submit video
+          document.getElementById("contact-video").classList.add("play");
+          contactVideo.play();
+        });
+      function hideContactAnimation() {
+        // $("#contact-video").removeClass("play");
+        document.getElementById("contact-video").classList.remove("play");
+      }
+
       $(document).ready(function () {
         // var autostart = touchStarted();
         console.log("ready");
+        // AOS.refresh();
         // $("body").scrollTo(50);
       });
-
-      //   var wakency = lottie.loadAnimation({
-      //     container: document.getElementById("wakency"), // Required
-      //     renderer: "svg",
-      //     loop: true,
-      //     autoplay: true,
-      //     path: "wakency.json", // the path to the animation json
-      //   });
 
       /*
         ::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -887,11 +907,28 @@
         ::::::::::::::::::::::::::::::::::::::::::::::::::::
         */
       $("#work-carousel-left").bind("slide.bs.carousel", function (e) {
-        console.log("slide event!");
+        // e.preventDefault();
+        console.log($(this));
+        // $(this).carousel("next");
+        console.log(e.relatedTarget);
+        // e.relatedTarget.classList.add("animate");\
+        var animEndEv = "webkitAnimationEnd animationend";
+
+        $(e.relatedTarget)
+          .find(".carousel-caption")
+          .first()
+          .addClass("animate__fadeInLeft")
+          .one(animEndEv, function () {
+            console.log("animEnd");
+            console.log(this);
+            console.log($(this));
+            this.classList.remove("animate__fadeInLeft");
+          });
       });
 
       $("#work-carousel-left").bind("slid.bs.carousel", function (e) {
         console.log("slid event!");
+        // e.relatedTarget.classList.remove("animate");
       });
     </script>
   </body>
