@@ -286,17 +286,19 @@ html {
 .ds-card--service {
   // height: 100%;
   .card-body {
-    padding: 2.5rem;
+    padding: 2rem;
   }
   .card-title {
-    @include ds-font-primary();
-    @include pixelsToFluidText(16px, 36px, 200px);
-    color: var(--colors--red);
-    margin-bottom: 2.5rem;
+    @include ds-font-secondary();
+    font-weight: 200;
+    line-height: auto;
+    @include pixelsToFluidText(16px, 28px, 200px);
+    color: var(--colors--white);
+    margin-bottom: 0rem;
   }
   p {
     @include ds-font-secondary();
-    @include pixelsToFluidText(16px, 20px, 200px);
+    @include pixelsToFluidText(16px, 28px, 200px);
     color: var(--colors--white);
   }
 }
@@ -390,7 +392,7 @@ html {
   &__control {
     border: none;
     background-color: transparent;
-    border-bottom: 1px solid var(--colors--black);
+    border-bottom: 2px solid var(--colors--black);
     &:focus {
       background-color: transparent;
       box-shadow: none;
