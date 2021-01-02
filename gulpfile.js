@@ -165,7 +165,7 @@
     // html
     gulp.watch(htmlConfig.src, html);
     // CSS changes
-    gulp.watch(cssConfig.watch, css);
+    gulp.watch(dir.src + "scss/**/*", css);
     //  js
     gulp.watch(dir.src + "js/**/*", js);
     // image changes

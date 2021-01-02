@@ -183,7 +183,10 @@ html {
 /* ABOUT SECTION */
 
 .ds-about {
-  padding: 12rem 0;
+  padding: 6.25rem 0;
+  h1 {
+    text-align: center;
+  }
   .text {
     @include ds-font-secondary();
     @include pixelsToFluidText(16px, 20px, 200px);
@@ -271,17 +274,17 @@ html {
 /***************************/
 /* _ds-services.scss */
 .ds-services {
-  padding: 12rem 0;
+  padding: 6.25rem 0;
   .text {
     @include ds-font-secondary();
-    @include pixelsToFluidText(16px, 20px, 200px);
+    @include pixelsToFluidText(16px, 28px, 200px);
     font-weight: 400;
-    column-count: 2;
-    column-gap: 2rem;
+    // column-count: 2;
+    // column-gap: 2rem;
   }
 }
 .ds-card--service {
-  height: 100%;
+  // height: 100%;
   .card-body {
     padding: 2.5rem;
   }
