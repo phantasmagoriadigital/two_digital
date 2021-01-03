@@ -16,7 +16,12 @@
     />
   </head>
 
-  <body data-spy="scroll" data-target="#ds-navbar" data-aos-offset="200">
+  <body
+    data-spy="scroll"
+    data-offset="106"
+    data-target="#ds-navbar"
+    data-aos-offset="200"
+  >
     <!-- *************************** /
     /* INTRO VIDEO */-->
     <div class="container-fluid px-0 position-relative">
@@ -101,7 +106,7 @@
 
     <!-- *************************** /
     /* ABOUT SECTION */-->
-    <div class="ds-about container-fluid bg-color-black" id="about">
+    <div class="ds-about container-fluid bg-color-black" id="services">
       <div class="row d-flex justify-content-center">
         <div class="col-10 col-md-9">
           <h1 class="heading-1 colors-white" data-aos="fade-up">
@@ -114,7 +119,7 @@
 
     <!-- *************************** /
     /* SERVICES TEXT SECTION */-->
-    <div class="ds-services container-fluid bg-color-white" id="services">
+    <div class="ds-services container-fluid bg-color-white" id="services2">
       <div class="row d-flex justify-content-center">
         <div class="col-10 col-md-8">
           <p class="text">
@@ -139,7 +144,7 @@
               src="https://picsum.photos/id/227/400/200"
               alt="Card image cap"
             />
-            <div class="card-body d-flex justify-content-between">
+            <div class="card-body d-flex justify-content-between align-items-center">
               <h2 class="card-title">
                 Strategic Branding <br />and Brand Expression
               </h2>
@@ -176,7 +181,7 @@
               src="https://picsum.photos/id/137/400/200"
               alt="Card image cap"
             />
-            <div class="card-body d-flex justify-content-between">
+            <div class="card-body d-flex justify-content-between align-items-center">
               <h2 class="card-title">
                 Digital Design and <br />Technology showcase
               </h2>
@@ -398,7 +403,32 @@
           </div>
 
           <div class="row ds-form">
-            <div class="col-12 col-md-3 offset-md-3">
+            <div class="col-12 col-md-4 offset-md-2">
+              <div class="row mb-4">
+                <div class="col-12">
+                  <div class="ds-form__group">
+                    <label class="colors-white">
+                      tell us about your project
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group ds-form__group">
+                    <label for="project" class="ds-form__label"
+                      >please give us some details</label
+                    >
+                    <input
+                      type="text"
+                      name="project"
+                      class="form-control ds-form__control"
+                    />
+                  </div>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-12">
                   <div class="form-group ds-form__group">
@@ -412,48 +442,31 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group ds-form__group">
-                    <label for="company" class="ds-form__label">company</label>
-                    <input
-                      type="text"
-                      name="company"
-                      class="form-control ds-form__control"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group ds-form__group">
-                    <label for="project" class="ds-form__label"
-                      >about your project</label
-                    >
-                    <input
-                      type="text"
-                      name="project"
-                      class="form-control ds-form__control"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-3">
+
               <div class="row">
                 <div class="col-12">
                   <div class="form-group ds-form__group">
                     <label for="email" class="ds-form__label">email</label>
                     <input
-                      type="email"
-                      name="email_address"
+                      type="text"
+                      name="email"
                       class="form-control ds-form__control"
                     />
                   </div>
                 </div>
               </div>
+
               <div class="row">
-                <div class="col-12"></div>
+                <div class="col-12">
+                  <div class="form-group ds-form__group">
+                    <label for="phone" class="ds-form__label">phone no.</label>
+                    <input
+                      type="text"
+                      name="phone"
+                      class="form-control ds-form__control"
+                    />
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-12">
@@ -468,15 +481,48 @@
                 </div>
               </div>
             </div>
+            <div class="col-12 col-md-3 offset-md-1">
+               <div class="row mb-4">
+                <div class="col-12">
+                  <div class="ds-form__group">
+                    <label class="colors-white">
+                      call us or email us
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <p>
+                    Business and General Enquiries <br>
+                    9867654952 <br>
+                    hello@twodesign.co.in
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p>
+                    Placements and Internships <br>
+                    9820615153 <br>
+                    info@twodesign.co.in
+                  </p>
+                </div>
+              </div>
+              
+            </div>
           </div>
 
           <div class="row ds-footer__links justify-content-center">
-            <div class="col-11 col-md-4 offset-md-2 ds-footer__links-col">
+            <div
+              class="col-11 col-md-6 ds-footer__links-col d-flex flex-row-reverse"
+            >
               <a href="#">FACEBOOK</a>
               <a href="#">TWITTER</a>
               <a href="#">INSTAGRAM</a>
             </div>
-            <div class="col-12 col-md-4 ds-footer__links-col">
+            <div class="col-12 col-md-6 ds-footer__links-col d-flex flex-row">
               <a href="#">MEDIUM</a>
               <a href="#">© 2021 TWO</a>
               <a href="#">PRIVACY POLICY</a>

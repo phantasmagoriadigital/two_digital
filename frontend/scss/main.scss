@@ -89,6 +89,7 @@ $enable-grid-classes: true;
 /* SMOOTH SCROLLING */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(6rem - 2px);
 }
 /***************************/
 /* _ds-navbar.scss */
@@ -278,6 +279,7 @@ html {
   .text {
     @include ds-font-secondary();
     @include pixelsToFluidText(16px, 28px, 200px);
+    text-align: center;
     font-weight: 400;
     // column-count: 2;
     // column-gap: 2rem;
