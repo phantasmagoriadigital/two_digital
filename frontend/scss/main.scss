@@ -443,26 +443,54 @@ body {
   }
 }
 // Button 
-.ds-btn--mixed {
-  border-left: .375rem solid var(--colors--black)!important;
-  color: var(--colors--black);
-  @include media-breakpoint-down(sm) {
-    margin-bottom: 2.7rem;
-  }
-  &:hover {
-    background-color: var(--colors--black);
-    color: var(--colors--white);
-  }
-}
+// .ds-btn--mixed {
+//   border-left: .375rem solid var(--colors--black)!important;
+//   color: var(--colors--black);
+//   @include media-breakpoint-down(sm) {
+//     margin-bottom: 2.7rem;
+//   }
+//   &:hover {
+//     background-color: var(--colors--black);
+//     color: var(--colors--white);
+//   }
+// }
 .ds-btn {
   padding: 1rem;
   text-align: left;
   border: none;
   display: block;
   position: relative;
-  &__text {
-    @include button-text();
+  span {
+    position: relative;
   }
+  &::before{
+		transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		content: '';
+		width: 5%;
+		height: 100%;
+		background: black;
+		position: absolute;
+		top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  &__text {
+    z-index: 1000;
+    @include button-text();
+    color: var(--colors--black);
+    transition: color 0.5s ease;
+  }
+  &:hover{
+    .ds-btn__text {
+      color: var(--colors--white);
+    }
+    
+		&::before{
+			background: black;
+			width: 100%;
+		}
+	}
+  
 }
 .ds-services-row {
   margin-right: 0px;
