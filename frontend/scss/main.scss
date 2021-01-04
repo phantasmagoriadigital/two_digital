@@ -91,6 +91,12 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(6rem - 2px);
 }
+
+body {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
 /***************************/
 /* _ds-navbar.scss */
 
@@ -456,5 +462,15 @@ html {
   position: relative;
   &__text {
     @include button-text();
+  }
+}
+.ds-services-row {
+  margin-right: 0px;
+  margin-left: 0px;
+  .ds-services-col {
+    @include media-breakpoint-down(sm) {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 }

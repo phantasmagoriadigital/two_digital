@@ -140,9 +140,9 @@ var heroVideo = lottie.loadAnimation({
 var dominoVideo = lottie.loadAnimation({
   container: document.getElementById("domino-video"),
   renderer: "svg",
-  loop: false,
+  loop: true,
   autoplay: true,
-  path: "domino.json",
+  path: "https://assets4.lottiefiles.com/packages/lf20_e7tgnysu.json",
 });
 
 var contactVideo = lottie.loadAnimation({
