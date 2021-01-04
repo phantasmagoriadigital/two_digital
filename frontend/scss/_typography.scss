@@ -130,6 +130,7 @@
   @include ds-font-primary();
   //   text-transform: uppercase;
   text-align: center;
+  @include pixelsToFluidText(30px, 70px, 200px);
 }
 
 @mixin heading-1 {
@@ -177,7 +178,7 @@
   font-size: 0.75rem;
   line-height: 160.72%;
   letter-spacing: 0.15em;
-  @include ds-font-tertiary();
+  @include ds-font-secondary();
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -216,11 +217,11 @@
 }
 
 @mixin form-text {
+  @include ds-font-secondary();
   font-weight: bold;
   font-size: 12px;
   line-height: 160.72%;
   letter-spacing: 0.23em;
-  @include ds-font-tertiary();
   text-transform: uppercase;
 }
 

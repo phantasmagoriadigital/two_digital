@@ -237,6 +237,7 @@ html {
     margin-bottom: 0rem;
     opacity: 0;
     transition: opacity 0.3s ease-out;
+    text-align: right;
   }
   &__client {
     &:hover {
@@ -262,13 +263,11 @@ html {
   &__title {
     @include heading-1();
     color: var(--colors--black);
-    margin-bottom: 3.625rem;
+    margin-bottom: 3rem;
     text-align: center;
   }
   &__image {
-    @include media-breakpoint-down(md) {
       text-align: center;
-    }
   }
 }
 
@@ -286,6 +285,7 @@ html {
   }
 }
 .ds-card--service {
+  border: none !important;
   // height: 100%;
   .card-body {
     padding: 2rem;
@@ -341,36 +341,42 @@ html {
 }
 
 .ds-footer {
-  padding-top: 8rem;
+  padding-top: 5rem;
   padding-bottom: 1.5625rem;
   &__title {
     @include display-2();
     margin-bottom: 2.75rem;
+    color: var(--colors--black);
   }
   &__links {
     a {
       @include form-text();
       color: var(--colors--black);
-      margin-right: 1.25rem;
-      margin-left: 1.25rem;
-      @include media-breakpoint-down(sm) {
-        margin-left: 0rem;
-        margin-right: 0rem;
+      // margin-right: 1.25rem;
+      // margin-left: 1.25rem;
+      @include media-breakpoint-down(md) {
+        margin-top: .5rem;
       }
     }
-    &:first-child {
-      margin-left: 0rem;
-    }
+    // &:first-child {
+    //   margin-left: 0rem;
+    // }
   }
   &__links-col {
-    @include media-breakpoint-down(sm) {
-      text-align-last: justify;
+    justify-content: space-between;
+    flex-flow: wrap;
+    @include media-breakpoint-down(md) {
+      justify-content: space-evenly;
     }
-  }
+    }
+  // }
 }
 
 .ds-form {
-  margin-bottom: 11.25rem;
+  p {
+    color: var(--colors--black);
+  }
+  margin-bottom: 9.5rem;
   &__group {
     margin-bottom: 2.75rem;
     label {
@@ -380,7 +386,8 @@ html {
       padding-top: 0.187rem;
       -webkit-transition: all 0.28s ease;
       transition: all 0.28s ease;
-      top: 0rem;
+      top: 10px;
+      color: var(--colors--black);
       &.focus {
         top: -1rem;
         font-size: 0.5rem;
@@ -427,5 +434,27 @@ html {
     z-index: 10000;
     height: 100vh;
     display: block;
+  }
+}
+// Button 
+.ds-btn--mixed {
+  border-left: .375rem solid var(--colors--black)!important;
+  color: var(--colors--black);
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 2.7rem;
+  }
+  &:hover {
+    background-color: var(--colors--black);
+    color: var(--colors--white);
+  }
+}
+.ds-btn {
+  padding: 1rem;
+  text-align: left;
+  border: none;
+  display: block;
+  position: relative;
+  &__text {
+    @include button-text();
   }
 }
